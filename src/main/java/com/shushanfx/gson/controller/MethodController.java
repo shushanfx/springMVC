@@ -1,4 +1,4 @@
-package com.shushanfx.gson;
+package com.shushanfx.gson.controller;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.web.servlet.ModelAndView;

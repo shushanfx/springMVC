@@ -27,4 +27,18 @@
     <context:annotation-config />
     <!-- scan component -->
     <context:component-scan base-package="com.shushanfx.gson" />
+
+    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>file:/WEB-INF/applicationContext.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="validatePool" class="com.shushanfx.gson.validate.ValidatePool">
+        <property name="templateDirectory" value="${templateDirectory}" />
+        <property name="defaultPoolSize" value="${defaultPoolSize}" />
+        <property name="poolSize" value="${poolSize}" />
+    </bean>
 </beans>
