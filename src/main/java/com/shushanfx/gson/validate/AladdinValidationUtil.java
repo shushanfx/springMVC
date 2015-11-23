@@ -132,7 +132,7 @@ public class AladdinValidationUtil implements Runnable{
             String inputLengthFile = dataFilePath + "lengthFile"+key+".txt";
 
             GenericObjectPool schemapool = new GenericObjectPool(
-                    new SchemaObjectFactory(new FileInputStream(inputSchemaFile))
+                    new SchemaValidationObjectFactory(new FileInputStream(inputSchemaFile))
                     , instanceNum,
                     GenericObjectPool.WHEN_EXHAUSTED_BLOCK, -1 // 最大等待时间
                     , -1 // 最大空闲时间
@@ -275,11 +275,11 @@ public class AladdinValidationUtil implements Runnable{
 
 }
 
-class SchemaObjectFactory extends BasePoolableObjectFactory {
+class SchemaValidationObjectFactory extends BasePoolableObjectFactory {
 
     private byte[] data = null;
 
-    SchemaObjectFactory(InputStream is) throws Exception {
+    SchemaValidationObjectFactory(InputStream is) throws Exception {
         try {
             int l = is.available();
             this.data = new byte[l];
@@ -293,7 +293,7 @@ class SchemaObjectFactory extends BasePoolableObjectFactory {
         }
     }
 
-    SchemaObjectFactory(byte[] data) throws Exception {
+    SchemaValidationObjectFactory(byte[] data) throws Exception {
         this.data = data;
     }
 

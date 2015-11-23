@@ -38,7 +38,7 @@ public final class ValidatePool {
             }
 
             GenericObjectPool schemapool = new GenericObjectPool(
-                    new SchemaObjectFactory(new FileInputStream(inputSchemaFile))
+                    new SchemaValidationObjectFactory(new FileInputStream(inputSchemaFile))
                     , instanceNum,
                     GenericObjectPool.WHEN_EXHAUSTED_BLOCK, -1 // 最大等待时间
                     , -1 // 最大空闲时间

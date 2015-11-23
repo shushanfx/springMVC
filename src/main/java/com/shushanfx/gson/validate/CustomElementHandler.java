@@ -83,9 +83,7 @@ public class CustomElementHandler implements ElementHandler {
     }
     @Override
     public void onEnd(ElementPath path) {
-        // TODO Auto-generated method stub
         Element row = path.getCurrent();
-
         if(attrlengthConfigs == null)//不带属性标签的长度限制
         {
             String value = null;
@@ -247,7 +245,7 @@ public class CustomElementHandler implements ElementHandler {
 
     @Override
     public void onStart(ElementPath path) {
-        // TODO Auto-generated method stub
+        
     }
     private boolean haveSpecialChars(String input){
         String str = input;
