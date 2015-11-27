@@ -55,7 +55,7 @@
                     <username>username</username>
                     <password>password</password>
                     <port>9090</port>
-                    <path>/</path>
+                    <path>/xmlview</path>
                 </configuration>
             </plugin>
         </plugins>
