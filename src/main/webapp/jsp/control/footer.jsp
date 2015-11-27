@@ -5,10 +5,10 @@
     </div>
 </div>
 <!--end-Footer-part-->
-<script src="/theme/matrix/js/jquery.min.js"></script>
-<script src="/theme/matrix/js/jquery.ui.custom.js"></script>
-<script src="/theme/matrix/js/bootstrap.min.js"></script>
-<script src="/theme/matrix/js/matrix.js"></script>
+<script src="${baseURI}/theme/matrix/js/jquery.min.js"></script>
+<script src="${baseURI}/theme/matrix/js/jquery.ui.custom.js"></script>
+<script src="${baseURI}/theme/matrix/js/bootstrap.min.js"></script>
+<script src="${baseURI}/theme/matrix/js/matrix.js"></script>
 <script type="text/javascript">
     $(function(){
         var sideBarComponent = $("#sidebar");
