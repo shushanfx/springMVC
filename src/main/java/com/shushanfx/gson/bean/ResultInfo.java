@@ -48,4 +48,12 @@ public class ResultInfo {
     public void setData(Object data) {
         this.data = data;
     }
+
+    public static ResultInfo newSuccess(){
+        return new ResultInfo();
+    }
+
+    public static ResultInfo newFailure(){
+        return new ResultInfo(CODE_FAIL, "操作失败");
+    }
 }

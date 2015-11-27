@@ -24,6 +24,12 @@ public final class ValidatePool {
     private String templateDirectory = "template";
     private int defaultPoolSize = 4;
     private Map<String, Integer> poolSize = null;
+    private String poolSizeString = null;
+
+    public void reload(){
+        schemaValidation.clear();
+        lengthValidation.clear();
+    }
 
     private ValidateResult initPool(String templateNumber) {
         ValidateResult result = new ValidateResult();
@@ -72,10 +78,14 @@ public final class ValidatePool {
         }
 
         if (action.isSchemaValidate()) {
-            validateResult.merge(validateSchema(action));
+            ValidateResult result = validateSchema(action);
+            validateResult.setSchemaCode(result.getSchemaCode());
+            validateResult.setSchemaMessage(result.getSchemaMessage());
         }
         if (action.isLengthValidate()) {
-            validateResult.merge(validateLength(action));
+            ValidateResult result = validateLength(action);
+            validateResult.setLengthCode(result.getLengthCode());
+            validateResult.setLengthMessage(result.getLengthMessage());
         }
 
         return validateResult;
@@ -193,6 +203,28 @@ public final class ValidatePool {
     }
 
     public void setPoolSize(String poolSizeString) {
+        HashMap<String, Integer> map = new HashMap<String, Integer>();
+        if (poolSizeString != null) {
+            String[] arr = poolSizeString.split(" ");
+            for (String item : arr) {
+                String[] keyValue = item.split("@");
+                if (keyValue.length == 2) {
+                    try {
+                        map.put(keyValue[0].trim(), Integer.parseInt(keyValue[1].trim(), 10));
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+        this.poolSize = map;
+    }
+
+    public String getPoolSizeString() {
+        return poolSizeString;
+    }
+
+    public void setPoolSizeString(String poolSizeString) {
         HashMap<String, Integer> map = new HashMap<String, Integer>();
         if (poolSizeString != null) {
             String[] arr = poolSizeString.split(" ");

@@ -31,14 +31,26 @@
     <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="locations">
             <list>
-                <value>file:/WEB-INF/applicationContext.properties</value>
+                <value>/WEB-INF/applicationContext.properties</value>
             </list>
         </property>
     </bean>
 
+<!--    <bean id="myPropertyConfigurer" class="org.springframework.beans.factory.config.PreferencesPlaceholderConfigurer">
+        <property name="location">
+
+        </property>
+    </bean>-->
+
     <bean id="validatePool" class="com.shushanfx.gson.validate.ValidatePool">
         <property name="templateDirectory" value="${templateDirectory}" />
         <property name="defaultPoolSize" value="${defaultPoolSize}" />
-        <property name="poolSize" value="${poolSize}" />
+        <property name="poolSizeString" value="${poolSize}" />
+    </bean>
+
+    <bean id="validateService" class="com.shushanfx.gson.validate.ValidateService">
+        <property name="xmlDirectory" value="${xmlDirectory}" />
+        <property name="validatePool" ref="validatePool" />
+        <property name="templateSuffixString" value="${templateExtension}" />
     </bean>
 </beans>
